@@ -1,9 +1,11 @@
 from urllib import parse,request
 import json
+Form_Data = {}
+Form_Data['i']=input('请输入您想查询的单词')
 if __name__ == "__main__":
     req = request.Request("http://fanyi.youdao.com/translate?smartresult=dict&smartresult=rule")
-    Form_Data = {}
-    Form_Data['i'] = 'Jack'
+    #Form_Data = {}
+    #Form_Data['i'] = 'Dragon'
     Form_Data['from'] = 'AUTO'
     Form_Data['to'] = 'AUTO'
     Form_Data['smartresult'] = 'dict'
