@@ -305,3 +305,94 @@ except RequestException:
 
 
 #%%
+import re
+
+content= "hello 123 4567 World_This is a regex Demo"
+result = re.match('^hello\s\d\d\d\s\d{4}\s\w{10}.*Demo$',content)
+print(result)
+
+#%%
+print(result.group())
+print(result.span())
+
+#%%
+import re
+content = "hello 123 4567 World_This is a regex Demo"
+result = re.match('^hello\s\d\d\d\s\d{4}\s\w{10}.*Demo$',content)
+print(result.group())
+
+#%%
+content= "hello 123 4567 World_This is a regex Demo"
+result = re.match('^hello.*Demo$',content)
+print(result.group())
+
+^hello\s(\d+)\sWorld.*Demo
+#%%
+import re
+content = "hello 123 4567 World_This is a regex Demo"
+result = re.match('^hello\s(\d+\s\d+)\sWorld.*Demo$',content)
+print(result.group())
+print(result.group(1))	
+
+#%%
+result = re.match('^he.*?(\d+\s\d+).*Demo$',content)
+print(result.group())
+print(result.group(1))	
+
+
+#%%
+content = """hello 123456 world_this
+my name is zhaofan
+"""
+result = re.match('he.*?(\d+)(.*zhaofan)$',content,re.S)
+print(result.group())
+print(result.group(1))
+print(result.group(2))	
+
+
+#%%
+content= "price is $5.00"
+result = re.match('price is \$5\.00',content)
+print(result.group())
+
+#%%
+content= "price is $5.00"
+result = re.match('^\w.*\$5\..*$',content)
+print(result.group())	
+
+#%%
+content = "extra things hello 123455 world_this is a Re Extra things"
+result = re.search('he.*?(\d+).*?Re',content)
+
+#%%
+print(result.group())
+print(result.group(1))
+
+#%%
+html = '''<div id="songs-list">
+    <h2 class="title">经典老歌</h2>
+    <p class="introduction">
+        经典老歌列表
+    </p>
+    <ul id="list" class="list-group">
+        <li data-view="2">一路上有你</li>
+        <li data-view="7">
+            <a href="/2.mp3" singer="任贤齐">沧海一声笑</a>
+        </li>
+        <li data-view="4" class="active">
+            <a href="/3.mp3" singer="齐秦">往事随风</a>
+        </li>
+        <li data-view="6"><a href="/4.mp3" singer="beyond">光辉岁月</a></li>
+        <li data-view="5"><a href="/5.mp3" singer="陈慧琳">记事本</a></li>
+        <li data-view="5">
+            <a href="/6.mp3" singer="邓丽君">但愿人长久</a>
+        </li>
+    </ul>
+</div>'''
+
+result = re.search('<li.*?active.*?<li.*?singer="(.*?)">(.*?)</a>',html,re.S)
+print(result.group())
+print(result.group(1))
+print(result.group(2))
+
+#%%
